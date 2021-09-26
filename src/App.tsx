@@ -11,6 +11,7 @@
   import Home from "./components/pages/Home";
   import './App.css';
   import './style/index.less';
+  import './style/antd.less';
  
   import {
     HashRouter,

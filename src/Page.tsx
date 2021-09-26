@@ -20,15 +20,17 @@
   } from 'react-router-dom';
   
   function Page() {
-    const { Content, Footer } = Layout;
+    const { Header, Content, Footer } = Layout;
 
     return (
       <div className="Page">
         <Layout>
+          <Header className="app_layout_header">
+            <h1 className="primary_color">vDrag</h1>
+          </Header>
           <Content className="app_layout_content">
             <Router>
               <Switch>
-                {/* <Route path="/"exact render={() => <Redirect to="/login" push />} /> */}
                 <Route exact path="/" component={Login} />
                 <Route path="/app" component={App} />
                 <Route path="/login" component={Login} />
@@ -38,7 +40,7 @@
             </Router>
           </Content>
           <Footer className="app_layout_foot">
-            <h1>这是页脚</h1>
+            <h4>vDrag版权所有</h4>
           </Footer>
         </Layout>
       </div>

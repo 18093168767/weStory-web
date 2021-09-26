@@ -5,6 +5,7 @@
 .App {
   text-align: center;
   height: 100%;
+  background-color: #f0f2f5;
 }
 .Page {
   height: 100%;
@@ -13,6 +14,10 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.primary_color{
+  color: #fff;
 }
 
 @media (prefers-reduced-motion: no-preference) {

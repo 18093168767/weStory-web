@@ -35,19 +35,17 @@ const Login = (props: any) => {
             rules={[{ required: true, message: '请输入用户名!' }]}
           >
             <Input
-              prefix={<UserOutlined size={13} />}
-              placeholder="管理员输入admin, 游客输入guest"
+              placeholder="请输入"
             />
           </FormItem>
           <FormItem name="password" rules={[{ required: true, message: '请输入密码!' }]}>
             <Input
-              prefix={<LockOutlined size={13} />}
               type="password"
-              placeholder="管理员输入admin, 游客输入guest"
+              placeholder="请输入密码"
             />
           </FormItem>
           <FormItem>
-              <span className="login-form-forgot" style={{ float: 'right' }}>
+              <span className="login-form-forgot" style={{ float: 'right', color: "#fff" }}>
                   忘记密码
               </span>
               <Button
@@ -58,7 +56,7 @@ const Login = (props: any) => {
               >
                   登录
               </Button>
-              <p style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <p style={{ display: 'flex', justifyContent: 'space-between', color: "#fff" }}>
                   <span>或 现在就去注册!</span>
                   <span>
                       (第三方登录)
