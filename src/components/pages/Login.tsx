@@ -1,8 +1,16 @@
+/*
+ * @Author: your name
+ * @Date: 2021-06-17 19:58:51
+ * @LastEditTime: 2021-09-27 17:44:58
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \ourstory\src\components\pages\Login.tsx
+ */
 import React, { useEffect } from 'react';
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, message } from 'antd';
 import { GithubOutlined, LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Route, useHistory, Redirect, withRouter } from 'react-router-dom';
-
+import axios from 'axios'
 
 const FormItem = Form.Item; 
 
@@ -10,17 +18,26 @@ const Login = (props: any) => {
   let history = useHistory();
   // const { history } = props;
   const handleSubmit = (values: any) => {
-    if (checkUser(values)) {
-      history.push('/app/home');
-    }
+    checkUser(values)
   };
   const checkUser = (values: any) => {
-    const users = [
-      ['admin', 'admin'],
-      ['guest', 'guest'],
-    ];
-    return users.some((user) => user[0] === values.userName && user[1] === values.password);
-  };
+    const url = "api/api/login"
+    axios({
+      method: "POST",
+      data: {
+        name: values.userName,
+        password: values.password
+      },
+      url: url
+    }).then(function(res: any){
+      if (res.code === 1000) {
+        message.success('登录成功');
+        history.push('/app/home')
+      } else {message.success('登录失败');
+
+      }
+    })
+};
 
   return (
     <div className="login">

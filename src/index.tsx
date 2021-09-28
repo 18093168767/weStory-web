@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import { AlitaProvider, setConfig } from 'redux-alita';
 import './index.css';
 import Page from './Page';
+import "./utils/axios"
 
 import reportWebVitals from './reportWebVitals';
 // setConfig(apis);

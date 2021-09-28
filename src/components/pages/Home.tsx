@@ -1,5 +1,12 @@
-import axios from "axios";
-import "../../utils/mock.js";
+/*
+ * @Author: your name
+ * @Date: 2021-07-14 22:17:40
+ * @LastEditTime: 2021-09-26 17:23:29
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \ourstory\src\components\pages\Home.tsx
+ */
+// import "../../utils/mock.js";
 import React, { useState, useEffect } from "react";
 import Sidebar from "../Sidebar";
 import { Layout, Button } from 'antd';
@@ -25,14 +32,15 @@ function Home() {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    setIsLoading(true);
-    const fetchData = async () => {
-      const result = await axios.get("/userLists");
-      setData(result.data.userinfo);
-      setIndex(1);
-      setIsLoading(false);
-    };
-    fetchData();
+    // setIsLoading(true);
+    // let that = this:any
+    // const fetchData = async () => {
+    //   const result = await that.$axios.get("/userLists");
+    //   setData(result.data.userinfo);
+    //   setIndex(1);
+    //   setIsLoading(false);
+    // };
+    // fetchData();
   }, [index]);
 
   return (
