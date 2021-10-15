@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-17 19:58:51
- * @LastEditTime: 2021-09-27 17:44:58
+ * @LastEditTime: 2021-10-12 15:05:31
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \ourstory\src\components\pages\Login.tsx
@@ -10,8 +10,7 @@ import React, { useEffect } from 'react';
 import { Button, Form, Input, message } from 'antd';
 import { GithubOutlined, LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Route, useHistory, Redirect, withRouter } from 'react-router-dom';
-import axios from 'axios'
-
+import {get, post} from "../../service/tools"
 const FormItem = Form.Item; 
 
 const Login = (props: any) => {
@@ -21,20 +20,19 @@ const Login = (props: any) => {
     checkUser(values)
   };
   const checkUser = (values: any) => {
-    const url = "api/api/login"
-    axios({
-      method: "POST",
+    const url = "api/login"
+    post({
       data: {
         name: values.userName,
         password: values.password
       },
       url: url
-    }).then(function(res: any){
+    }).then((res: any)=>{
       if (res.code === 1000) {
         message.success('登录成功');
         history.push('/app/home')
-      } else {message.success('登录失败');
-
+      } else {
+        message.success('登录失败');
       }
     })
 };
