@@ -104,8 +104,8 @@ module.exports = function (proxy, allowedHost) {
     // 配置代理
     proxy: {
       '/api': {
-            // target: 'http://localhost:8084', // 后台服务地址以及端口号
-            target: 'http://192.168.43.142:8084', // 后台服务地址以及端口号
+            target: 'http://127.0.0.1:8084', // 后台服务地址以及端口号
+            // target: 'http://192.168.43.142:8084', // 后台服务地址以及端口号
             changeOrigin: true, //是否跨域
             pathRewrite: { '^/api': '/' }
           }

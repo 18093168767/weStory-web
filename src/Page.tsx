@@ -5,8 +5,9 @@
   *@Description: test
  */
   import App from './App';
-  import Login from "./components/pages/Login"
+  import Login from "./components/pages/Login";
   import Error from './components/pages/Error';
+  import Register from './components/pages/Register';
   import { Layout, notification } from 'antd';
   import './App.css';
   import './style/index.less';
@@ -34,6 +35,7 @@
                 <Route exact path="/" component={Login} />
                 <Route path="/app" component={App} />
                 <Route path="/login" component={Login} />
+                <Route path="/register" component={Register} />
                 <Route path="/404" component={Error} />
                 <Route component={Error} />
               </Switch>

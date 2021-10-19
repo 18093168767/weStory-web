@@ -1,10 +1,10 @@
 /*
  * @Author: your name
- * @Date: 2021-06-17 19:58:51
- * @LastEditTime: 2021-10-18 14:22:04
+ * @Date: 2021-10-18 13:56:17
+ * @LastEditTime: 2021-10-18 15:44:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: \ourstory\src\components\pages\Login.tsx
+ * @FilePath: \ourstory\src\components\pages\Register.tsx
  */
 import React, { useEffect } from 'react';
 import { Button, Form, Input, message } from 'antd';
@@ -14,14 +14,17 @@ import {get, post} from "../../service/tools"
 import { KEY, IV, Encrypt } from "../../utils/crypto"
 const FormItem = Form.Item; 
 
-const Login = (props: any) => {
+const Register = (props: any) => {
   let history = useHistory();
-  // const { history } = props;
   const handleSubmit = (values: any) => {
-    checkUser(values)
+    addUser(values)
   };
-  const checkUser = (values: any) => {
-    const url = "api/login"
+  const addUser = (values: any) => {
+    const url = "api/addUser"
+    console.log({
+      name: values.userName,
+      password: Encrypt(values.password)
+    })
     post({
       data: {
         name: values.userName,
@@ -30,8 +33,8 @@ const Login = (props: any) => {
       url: url
     }).then((res: any)=>{
       if (res && res.code === 1000) {
-        message.success('登录成功');
-        history.push('/app/home')
+        message.success('注册成功');
+        history.push('/login')
       } else {
         if (res && res.code === 2001) {
           message.error(res.msg);
@@ -42,14 +45,14 @@ const Login = (props: any) => {
     })
   };
 
-  const registerFn = () => {
-    history.push('/register')
+  const loginFn = () => {
+    history.push('/login')
   }
 
   return (
-    <div className="login">
-      <div className="login-form">
-        <div className="login-logo">
+    <div className="register">
+      <div className="register-form">
+        <div className="register-logo">
           <h1>vDrag</h1>
           {/* <PwaInstaller /> */}
         </div>
@@ -68,23 +71,23 @@ const Login = (props: any) => {
               placeholder="请输入密码"
             />
           </FormItem>
+          <FormItem name="passwordConfirm" rules={[{ required: true, message: '请再次输入密码!' }]}>
+            <Input
+              type="password"
+              placeholder="请再次输入密码"
+            />
+          </FormItem>
           <FormItem>
-              <span className="login-form-forgot" style={{ float: 'right', color: "#fff" }}>
-                  忘记密码
-              </span>
               <Button
                   type="primary"
                   htmlType="submit"
-                  className="login-form-button"
+                  className="register-form-button"
                   style={{ width: '100%' }}
               >
-                  登录
+                  注册
               </Button>
               <p style={{ display: 'flex', justifyContent: 'space-between', color: "#fff" }}>
-                  <span>或 现在就去 <span onClick={ registerFn }>注册</span>!</span>
-                  <span>
-                      (第三方登录)
-                  </span>
+                <span onClick={ loginFn }>登录</span>
               </p>
           </FormItem>
         </Form>
@@ -93,4 +96,4 @@ const Login = (props: any) => {
   )
 }
 
-export default Login
+export default Register
